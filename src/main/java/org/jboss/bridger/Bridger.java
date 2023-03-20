@@ -31,6 +31,7 @@ import java.io.OutputStream;
 import java.io.RandomAccessFile;
 import java.lang.instrument.ClassFileTransformer;
 import java.lang.instrument.IllegalClassFormatException;
+import java.lang.reflect.Modifier;
 import java.security.ProtectionDomain;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -230,6 +231,10 @@ public final class Bridger implements ClassFileTransformer {
                 } else if (name.indexOf("$$protected") > idx) {
                     newAccess = Opcodes.ACC_PROTECTED;
                 }
+                
+                if (Modifier.isStatic(access) && !Modifier.isStatic(newAccess))
+                    newAccess |= Opcodes.ACC_STATIC;
+
                 transformedMethodCount.getAndIncrement();
                 defaultVisitor = super.visitMethod(newAccess | Opcodes.ACC_BRIDGE | Opcodes.ACC_SYNTHETIC, name.substring(0, idx), desc, signature, exceptions);
             } else {

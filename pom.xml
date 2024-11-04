@@ -28,7 +28,7 @@
 
     <groupId>com.github.TownyAdvanced</groupId>
     <artifactId>bridger</artifactId>
-    <version>1.7.1.Final</version>
+    <version>1.7.2.Final</version> <!-- highly arbitrary version -->
     <packaging>maven-plugin</packaging>
 
     <parent>
@@ -128,7 +128,7 @@
         <dependency>
             <groupId>org.ow2.asm</groupId>
             <artifactId>asm</artifactId>
-            <version>9.2</version>
+            <version>9.7.1</version>
         </dependency>
 
         <!-- maven plugin dependencies -->

@@ -73,7 +73,7 @@ public final class Bridger implements ClassFileTransformer {
         } else {
             bridger.transformRecursive(args);
         }
-        System.out.printf("Translated %d methods and %d method calls%n", bridger.getTransformedMethodCount(), bridger.getTransformedMethodCallCount());
+        System.out.printf("Translated %d methods and %d method calls", bridger.getTransformedMethodCount(), bridger.getTransformedMethodCallCount());
     }
 
     /**
